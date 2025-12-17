@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.FinalProject" parent="android:Theme.Material.Light.NoActionBar" />
+    <!-- Use an AppCompat-based theme to keep AppCompatActivity happy -->
+    <style name="Theme.FinalProject" parent="Theme.MaterialComponents.DayNight.NoActionBar" />
 </resources>
