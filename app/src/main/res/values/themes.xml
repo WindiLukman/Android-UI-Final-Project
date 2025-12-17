@@ -2,5 +2,5 @@
 <resources>
 
     <!-- Use an AppCompat-based theme to keep AppCompatActivity happy -->
-    <style name="Theme.FinalProject" parent="Theme.MaterialComponents.DayNight.NoActionBar" />
+    <style name="Theme.FinalProject" parent="Theme.Material3.Dark.NoActionBar" />
 </resources>

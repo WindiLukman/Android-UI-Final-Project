@@ -29,9 +29,16 @@ class HomeActivity : AppCompatActivity() {
             Game("Puzzle Game 3", R.drawable.placeholder)
         )
 
+        val adventureGames = listOf(
+            Game("Adventure Game 1", R.drawable.placeholder),
+            Game("Adventure Game 2", R.drawable.placeholder),
+            Game("Adventure Game 3", R.drawable.placeholder)
+        )
+
         val genreList = listOf(
             Genre("Action", actionGames),
-            Genre("Puzzle", puzzleGames)
+            Genre("Puzzle", puzzleGames),
+            Genre("Adventure", adventureGames)
         )
 
         binding.genreRecycler.layoutManager = LinearLayoutManager(this)

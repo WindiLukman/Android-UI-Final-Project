@@ -1,11 +1,13 @@
 <resources>
     <string name="app_name">Final Project</string>
-    <string name="login_title">Welcome Back</string>
-    <string name="login_subtitle">Sign in to continue exploring games</string>
+    <string name="login_title">LOGIN</string>
     <string name="username_hint">Username</string>
+    <string name="username_placeholder">Your Username</string>
     <string name="password_hint">Password</string>
-    <string name="login_button">Log In</string>
+    <string name="password_placeholder">Your Password</string>
+    <string name="login_button">Continue</string>
     <string name="login_success">Login successful</string>
     <string name="login_error_generic">Unable to log in. Please try again.</string>
     <string name="login_error_empty">Username and password are required.</string>
+    <string name="login_signup_prompt">Don\'t have an account?</string>
 </resources>

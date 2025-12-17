@@ -5,12 +5,15 @@
     android:layout_width="120dp"
     android:layout_height="180dp"
     android:layout_margin="8dp"
-    app:cardCornerRadius="8dp">
+    app:cardBackgroundColor="@color/home_card"
+    app:cardCornerRadius="6dp"
+    app:cardElevation="0dp">
 
     <ImageView
         android:id="@+id/gameImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/home_card"
         android:scaleType="centerCrop" />
 
 </androidx.cardview.widget.CardView>
