@@ -1,13 +1,12 @@
 package com.example.finalproject
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
-import com.example.finalproject.databinding.ActivityLoginBinding
+import com.example.finalproject.databinding.ActivityRegisterBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -19,62 +18,62 @@ import java.io.OutputStreamWriter
 import java.net.HttpURLConnection
 import java.net.URL
 
-class LoginActivity : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityLoginBinding
+    private lateinit var binding: ActivityRegisterBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLoginBinding.inflate(layoutInflater)
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.loginButton.setOnClickListener {
-            attemptLogin()
+        binding.registerButton.setOnClickListener {
+            attemptRegister()
         }
 
-        binding.signupPrompt.setOnClickListener {
-            startActivity(Intent(this, RegisterActivity::class.java))
+        binding.loginPrompt.setOnClickListener {
+            finish()
         }
     }
 
-    private fun attemptLogin() {
-        val username = binding.usernameEditText.text?.toString()?.trim().orEmpty()
-        val password = binding.passwordEditText.text?.toString()?.trim().orEmpty()
+    private fun attemptRegister() {
+        val name = binding.nameEditText.text?.toString()?.trim().orEmpty()
+        val password = binding.registerPasswordEditText.text?.toString()?.trim().orEmpty()
 
-        if (username.isBlank() || password.isBlank()) {
-            showError(getString(R.string.login_error_empty))
+        if (name.isBlank() || password.isBlank()) {
+            showError(getString(R.string.register_error_empty))
             return
         }
 
         setLoading(true)
         lifecycleScope.launch {
-            val result = runCatching { performLogin(username, password) }
+            val result = runCatching { performRegister(name, password) }
             setLoading(false)
 
             result.onSuccess { message ->
-                binding.loginError.visibility = View.GONE
-                Toast.makeText(this@LoginActivity, message.ifBlank { getString(R.string.login_success) }, Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
+                binding.registerError.visibility = View.GONE
+                Toast.makeText(this@RegisterActivity, message.ifBlank { getString(R.string.register_success) }, Toast.LENGTH_SHORT).show()
+                finish()
             }.onFailure { error ->
-                showError(error.message ?: getString(R.string.login_error_generic))
+                showError(error.message ?: getString(R.string.register_error_generic))
             }
         }
     }
 
     private fun showError(message: String) {
-        binding.loginError.text = message
-        binding.loginError.visibility = View.VISIBLE
+        binding.registerError.text = message
+        binding.registerError.visibility = View.VISIBLE
     }
 
     private fun setLoading(isLoading: Boolean) {
-        binding.loginProgress.isVisible = isLoading
-        binding.loginButton.isEnabled = !isLoading
-        binding.usernameInputLayout.isEnabled = !isLoading
-        binding.passwordInputLayout.isEnabled = !isLoading
+        binding.registerProgress.isVisible = isLoading
+        binding.registerButton.isEnabled = !isLoading
+        binding.nameInputLayout.isEnabled = !isLoading
+        binding.registerPasswordInputLayout.isEnabled = !isLoading
     }
 
-    private suspend fun performLogin(username: String, password: String): String = withContext(Dispatchers.IO) {
-        val url = URL(LOGIN_URL)
+    private suspend fun performRegister(name: String, password: String): String = withContext(Dispatchers.IO) {
+        val url = URL(REGISTER_URL)
         val connection = (url.openConnection() as HttpURLConnection).apply {
             requestMethod = "POST"
             connectTimeout = 10000
@@ -85,7 +84,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         val payload = JSONObject().apply {
-            put("name", username)
+            put("name", name)
             put("password", password)
         }
 
@@ -102,7 +101,7 @@ class LoginActivity : AppCompatActivity() {
             val response = stream?.let { readStream(it) }.orEmpty()
 
             if (responseCode !in 200..299) {
-                throw IOException(response.ifBlank { getString(R.string.login_error_generic) })
+                throw IOException(response.ifBlank { getString(R.string.register_error_generic) })
             }
 
             response
@@ -123,6 +122,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val LOGIN_URL = "http://10.0.2.2:3000/Users/login"
+        private const val REGISTER_URL = "http://10.0.2.2:3000/Users/register"
     }
 }

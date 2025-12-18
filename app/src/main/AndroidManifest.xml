@@ -33,6 +33,11 @@
             android:theme="@style/Theme.FinalProject" />
 
         <activity
+            android:name=".RegisterActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FinalProject" />
+
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
 

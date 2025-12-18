@@ -10,4 +10,10 @@
     <string name="login_error_generic">Unable to log in. Please try again.</string>
     <string name="login_error_empty">Username and password are required.</string>
     <string name="login_signup_prompt">Don\'t have an account?</string>
+    <string name="register_title">REGISTER</string>
+    <string name="register_button">Create Account</string>
+    <string name="register_success">Registration successful</string>
+    <string name="register_error_generic">Unable to register. Please try again.</string>
+    <string name="register_error_empty">Name and password are required.</string>
+    <string name="register_login_prompt">Already have an account? Login</string>
 </resources>
