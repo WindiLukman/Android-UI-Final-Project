@@ -6,11 +6,16 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.finalproject.models.Genre
 import com.example.finalproject.R
+import com.example.finalproject.models.Game
+import com.example.finalproject.models.Genre
 
-class GenreAdapter(private val genreList: List<Genre>) :
-    RecyclerView.Adapter<GenreAdapter.GenreViewHolder>() {
+class GenreAdapter(
+    initialGenres: List<Genre>,
+    private val onGameClick: (Game) -> Unit
+) : RecyclerView.Adapter<GenreAdapter.GenreViewHolder>() {
+
+    private var genreList: List<Genre> = initialGenres
 
     inner class GenreViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val genreTitle: TextView = itemView.findViewById(R.id.genreTitle)
@@ -29,8 +34,13 @@ class GenreAdapter(private val genreList: List<Genre>) :
 
         holder.gameRecycler.layoutManager =
             LinearLayoutManager(holder.itemView.context, LinearLayoutManager.HORIZONTAL, false)
-        holder.gameRecycler.adapter = GameAdapter(genre.games)
+        holder.gameRecycler.adapter = GameAdapter(genre.games, onGameClick)
     }
 
     override fun getItemCount(): Int = genreList.size
+
+    fun updateGenres(genres: List<Genre>) {
+        genreList = genres
+        notifyDataSetChanged()
+    }
 }

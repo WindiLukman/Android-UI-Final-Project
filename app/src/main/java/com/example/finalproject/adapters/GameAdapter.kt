@@ -5,10 +5,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.finalproject.models.Game
+import com.bumptech.glide.Glide
 import com.example.finalproject.R
+import com.example.finalproject.models.Game
 
-class GameAdapter(private val games: List<Game>) :
+class GameAdapter(
+    private val games: List<Game>,
+    private val onGameClick: (Game) -> Unit
+) :
     RecyclerView.Adapter<GameAdapter.GameViewHolder>() {
 
     inner class GameViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -23,7 +27,13 @@ class GameAdapter(private val games: List<Game>) :
 
     override fun onBindViewHolder(holder: GameViewHolder, position: Int) {
         val game = games[position]
-        holder.gameImage.setImageResource(game.imageRes)
+        Glide.with(holder.gameImage.context)
+            .load(game.imageUrl)
+            .placeholder(R.drawable.placeholder)
+            .error(R.drawable.placeholder)
+            .into(holder.gameImage)
+
+        holder.itemView.setOnClickListener { onGameClick(game) }
     }
 
     override fun getItemCount(): Int = games.size

@@ -16,4 +16,22 @@
     <string name="register_error_generic">Unable to register. Please try again.</string>
     <string name="register_error_empty">Name and password are required.</string>
     <string name="register_login_prompt">Already have an account? Login</string>
+    <string name="home_error_generic">Unable to load games. Please try again.</string>
+    <string name="home_empty_state">No games available.</string>
+    <string name="home_empty_filter">No results match your search.</string>
+    <string name="home_title">Home</string>
+    <string name="home_search_hint">Search games...</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_search">Search</string>
+    <string name="nav_my_games">My Games</string>
+    <string name="nav_settings">Settings</string>
+    <string name="nav_profile">Profile</string>
+    <string name="developer_label">Developer</string>
+    <string name="publisher_label">Published By</string>
+    <string name="bookmark">Bookmark</string>
+    <string name="audience_score">Audience Score</string>
+    <string name="audience_reviews">Audience Reviews</string>
+    <string name="game_discussions">Game Discussions</string>
+    <string name="rating_peak_label">Absolute Peak</string>
+    <string name="not_available">N/A</string>
 </resources>

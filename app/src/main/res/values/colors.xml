@@ -27,4 +27,5 @@
     <color name="home_text_secondary">#C8C8CC</color>
     <color name="home_text_hint">#8E8E93</color>
     <color name="home_icon_tint">#D0D0D4</color>
+    <color name="home_nav_active">#8B7CFF</color>
 </resources>
