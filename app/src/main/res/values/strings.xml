@@ -26,6 +26,10 @@
     <string name="nav_my_games">My Games</string>
     <string name="nav_settings">Settings</string>
     <string name="nav_profile">Profile</string>
+    <string name="profile_title">Profile</string>
+    <string name="profile_username_placeholder">Username</string>
+    <string name="profile_games_reviewed">Games Reviewed</string>
+    <string name="profile_logout">Logout</string>
     <string name="developer_label">Developer</string>
     <string name="publisher_label">Published By</string>
     <string name="bookmark">Bookmark</string>
@@ -34,4 +38,10 @@
     <string name="game_discussions">Game Discussions</string>
     <string name="rating_peak_label">Absolute Peak</string>
     <string name="not_available">N/A</string>
+    <string name="game_title_placeholder">Game Title</string>
+    <string name="developer_placeholder">Developer</string>
+    <string name="publisher_placeholder">Publisher</string>
+    <string name="description_placeholder">Game description goes here.</string>
+    <string name="rating_value_placeholder">4.5</string>
+    <string name="content_desc_game_cover">Game cover image</string>
 </resources>

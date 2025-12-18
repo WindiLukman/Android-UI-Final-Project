@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import com.example.finalproject.databinding.ActivityLoginBinding
+import com.example.finalproject.data.UserSession
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -53,6 +54,7 @@ class LoginActivity : AppCompatActivity() {
 
             result.onSuccess { message ->
                 binding.loginError.visibility = View.GONE
+                UserSession.saveUsername(this@LoginActivity, username)
                 Toast.makeText(this@LoginActivity, message.ifBlank { getString(R.string.login_success) }, Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
             }.onFailure { error ->

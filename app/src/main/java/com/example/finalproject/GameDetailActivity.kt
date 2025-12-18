@@ -1,6 +1,5 @@
 package com.example.finalproject
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -10,6 +9,8 @@ import com.example.finalproject.models.Game
 import com.google.android.material.chip.Chip
 import java.util.Locale
 import kotlin.math.floor
+import com.example.finalproject.navigation.BottomNavHelper
+import com.example.finalproject.navigation.BottomNavDestination
 
 class GameDetailActivity : AppCompatActivity() {
 
@@ -20,19 +21,13 @@ class GameDetailActivity : AppCompatActivity() {
         binding = ActivityGameDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val game = intent.getParcelableExtra(EXTRA_GAME, Game::class.java) ?: legacyParcelable()
+        val game = legacyParcelable()
         if (game == null) {
             finish()
             return
         }
 
-        binding.navHomeItem.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java).apply {
-                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
-            }
-            startActivity(intent)
-            finish()
-        }
+        BottomNavHelper.bind(this, binding.bottomNavContainer, BottomNavDestination.NONE)
 
         bindGame(game)
     }

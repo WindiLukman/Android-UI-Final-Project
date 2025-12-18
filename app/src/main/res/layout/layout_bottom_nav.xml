@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottomNavContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/home_background"
+    tools:ignore="UseCompoundDrawables">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/home_divider" />
+
+    <LinearLayout
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_nav_height"
+        android:baselineAligned="false"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="@dimen/bottom_nav_padding_top"
+        android:paddingBottom="@dimen/bottom_nav_padding_bottom"
+        android:weightSum="5">
+
+        <LinearLayout
+            android:id="@+id/navHomeItem"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/navHomeIcon"
+                android:layout_width="@dimen/bottom_nav_icon_size"
+                android:layout_height="@dimen/bottom_nav_icon_size"
+                android:contentDescription="@string/nav_home"
+                android:src="@drawable/ic_home_nav"
+                android:duplicateParentState="true"
+                app:tint="@color/nav_icon_selector" />
+
+            <TextView
+                android:id="@+id/navHomeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/nav_home"
+                android:textColor="@color/nav_text_selector"
+                android:textSize="@dimen/bottom_nav_label_size"
+                android:duplicateParentState="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navSearchItem"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/navSearchIcon"
+                android:layout_width="@dimen/bottom_nav_icon_size"
+                android:layout_height="@dimen/bottom_nav_icon_size"
+                android:contentDescription="@string/nav_search"
+                android:src="@drawable/ic_search"
+                android:duplicateParentState="true"
+                app:tint="@color/nav_icon_selector" />
+
+            <TextView
+                android:id="@+id/navSearchLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/nav_search"
+                android:textColor="@color/nav_text_selector"
+                android:textSize="@dimen/bottom_nav_label_size"
+                android:duplicateParentState="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navMyGamesItem"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/navMyGamesIcon"
+                android:layout_width="@dimen/bottom_nav_icon_size"
+                android:layout_height="@dimen/bottom_nav_icon_size"
+                android:contentDescription="@string/nav_my_games"
+                android:src="@drawable/ic_games_nav"
+                android:duplicateParentState="true"
+                app:tint="@color/nav_icon_selector" />
+
+            <TextView
+                android:id="@+id/navMyGamesLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/nav_my_games"
+                android:textColor="@color/nav_text_selector"
+                android:textSize="@dimen/bottom_nav_label_size"
+                android:duplicateParentState="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navSettingsItem"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/navSettingsIcon"
+                android:layout_width="@dimen/bottom_nav_icon_size"
+                android:layout_height="@dimen/bottom_nav_icon_size"
+                android:contentDescription="@string/nav_settings"
+                android:src="@drawable/ic_settings_nav"
+                android:duplicateParentState="true"
+                app:tint="@color/nav_icon_selector" />
+
+            <TextView
+                android:id="@+id/navSettingsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/nav_settings"
+                android:textColor="@color/nav_text_selector"
+                android:textSize="@dimen/bottom_nav_label_size"
+                android:duplicateParentState="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navProfileItem"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/navProfileIcon"
+                android:layout_width="@dimen/bottom_nav_icon_size"
+                android:layout_height="@dimen/bottom_nav_icon_size"
+                android:contentDescription="@string/nav_profile"
+                android:src="@drawable/ic_person"
+                android:duplicateParentState="true"
+                app:tint="@color/nav_icon_selector" />
+
+            <TextView
+                android:id="@+id/navProfileLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/nav_profile"
+                android:textColor="@color/nav_text_selector"
+                android:textSize="@dimen/bottom_nav_label_size"
+                android:duplicateParentState="true" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

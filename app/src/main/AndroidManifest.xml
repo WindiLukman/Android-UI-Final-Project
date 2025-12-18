@@ -45,6 +45,11 @@
             android:exported="false"
             android:theme="@style/Theme.FinalProject" />
 
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FinalProject" />
+
     </application>
 
 </manifest>

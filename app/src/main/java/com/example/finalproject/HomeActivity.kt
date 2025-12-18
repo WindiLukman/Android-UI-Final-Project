@@ -13,6 +13,8 @@ import com.example.finalproject.adapters.GenreAdapter
 import com.example.finalproject.databinding.ActivityHomeBinding
 import com.example.finalproject.models.Game
 import com.example.finalproject.models.Genre
+import com.example.finalproject.navigation.BottomNavDestination
+import com.example.finalproject.navigation.BottomNavHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -44,6 +46,8 @@ class HomeActivity : AppCompatActivity() {
         binding.searchInput.addTextChangedListener { text ->
             filterGenres(text?.toString().orEmpty())
         }
+
+        BottomNavHelper.bind(this, binding.bottomNavContainer, BottomNavDestination.HOME)
 
         loadData()
     }
