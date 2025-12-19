@@ -52,7 +52,8 @@ class RegisterActivity : AppCompatActivity() {
 
             result.onSuccess { message ->
                 binding.registerError.visibility = View.GONE
-                Toast.makeText(this@RegisterActivity, message.ifBlank { getString(R.string.register_success) }, Toast.LENGTH_SHORT).show()
+                val successMessage = message.ifBlank { getString(R.string.register_success) }
+                Toast.makeText(this@RegisterActivity, successMessage, Toast.LENGTH_SHORT).show()
                 finish()
             }.onFailure { error ->
                 showError(error.message ?: getString(R.string.register_error_generic))

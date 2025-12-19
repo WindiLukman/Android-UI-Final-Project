@@ -4,10 +4,12 @@ import android.app.Activity
 import android.content.Intent
 import com.example.finalproject.HomeActivity
 import com.example.finalproject.ProfileActivity
+import com.example.finalproject.SearchActivity
+import com.example.finalproject.MyGamesActivity
 import com.example.finalproject.databinding.LayoutBottomNavBinding
 
 enum class BottomNavDestination {
-    HOME, PROFILE, NONE
+    HOME, SEARCH, MY_GAMES, PROFILE, NONE
 }
 
 object BottomNavHelper {
@@ -29,6 +31,17 @@ object BottomNavHelper {
             }
         }
 
+        binding.navMyGamesItem.setOnClickListener {
+            if (active != BottomNavDestination.MY_GAMES) {
+                activity.startActivity(
+                    Intent(activity, MyGamesActivity::class.java).apply {
+                        addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+                    }
+                )
+                activity.finish()
+            }
+        }
+
         binding.navProfileItem.setOnClickListener {
             if (active != BottomNavDestination.PROFILE) {
                 activity.startActivity(
@@ -41,16 +54,24 @@ object BottomNavHelper {
         }
 
         // Stubs for other items
-        binding.navSearchItem.setOnClickListener { /* TODO: wire search */ }
-        binding.navMyGamesItem.setOnClickListener { /* TODO: wire my games */ }
+        binding.navSearchItem.setOnClickListener {
+            if (active != BottomNavDestination.SEARCH) {
+                activity.startActivity(
+                    Intent(activity, SearchActivity::class.java).apply {
+                        addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+                    }
+                )
+                activity.finish()
+            }
+        }
         binding.navSettingsItem.setOnClickListener { /* TODO: wire settings */ }
     }
 
     private fun setSelected(binding: LayoutBottomNavBinding, active: BottomNavDestination) {
         binding.navHomeItem.isSelected = active == BottomNavDestination.HOME
+        binding.navSearchItem.isSelected = active == BottomNavDestination.SEARCH
+        binding.navMyGamesItem.isSelected = active == BottomNavDestination.MY_GAMES
         binding.navProfileItem.isSelected = active == BottomNavDestination.PROFILE
-        binding.navSearchItem.isSelected = false
-        binding.navMyGamesItem.isSelected = false
         binding.navSettingsItem.isSelected = false
     }
 }

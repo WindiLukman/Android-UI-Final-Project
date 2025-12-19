@@ -39,8 +39,8 @@
 
             <ImageView
                 android:id="@+id/gameImage"
-                android:layout_width="150dp"
-                android:layout_height="200dp"
+                android:layout_width="200dp"
+                android:layout_height="300dp"
                 android:background="@color/home_card"
                 android:scaleType="centerCrop"
                 android:src="@drawable/placeholder"
@@ -197,28 +197,33 @@
                 android:contentDescription="@null" />
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/ratingValue"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="8dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="@string/rating_value_placeholder"
-                android:textColor="@color/home_text_primary"
-                android:textSize="16sp" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
 
-            <TextView
-                android:id="@+id/ratingLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="4dp"
-                android:fontFamily="sans-serif-black"
-                android:text="@string/rating_peak_label"
-                android:textColor="@color/purple_500"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/ratingValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/rating_value_placeholder"
+                    android:textColor="@color/home_text_primary"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/ratingCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="sans-serif"
+                    android:text="0"
+                    android:textColor="@color/home_text_secondary"
+                    android:textSize="12sp" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -257,6 +262,109 @@
                     android:textColor="@color/home_text_primary"
                     android:textSize="14sp"
                     android:textStyle="bold" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/reviewsDivider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/home_divider" />
+
+            <LinearLayout
+                android:id="@+id/audienceReviewsSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="12dp">
+
+                <TextView
+                    android:id="@+id/reviewsEmpty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:text="@string/audience_reviews_empty"
+                    android:textColor="@color/home_text_secondary"
+                    android:textSize="13sp"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:id="@+id/reviewsContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/discussionsSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="12dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/discussionReplying"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:textColor="@color/home_nav_active"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    android:paddingBottom="4dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@color/home_surface"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="8dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp">
+
+                    <EditText
+                        android:id="@+id/discussionInput"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:hint="@string/discussion_new_comment"
+                        android:textColor="@color/home_text_primary"
+                        android:textColorHint="@color/home_text_hint"
+                        android:textSize="13sp"
+                        android:maxLines="3"
+                        android:inputType="textMultiLine" />
+
+                    <ImageButton
+                        android:id="@+id/discussionSend"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_chevron_right"
+                        android:contentDescription="@string/discussion_send"
+                        app:tint="@color/home_nav_active" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/discussionsEmpty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif"
+                    android:text="@string/discussions_empty"
+                    android:textColor="@color/home_text_secondary"
+                    android:textSize="13sp"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:id="@+id/discussionsContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="8dp" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

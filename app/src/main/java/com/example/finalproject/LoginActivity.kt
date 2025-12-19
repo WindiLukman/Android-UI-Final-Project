@@ -52,10 +52,23 @@ class LoginActivity : AppCompatActivity() {
             val result = runCatching { performLogin(username, password) }
             setLoading(false)
 
-            result.onSuccess { message ->
+            result.onSuccess { response ->
                 binding.loginError.visibility = View.GONE
-                UserSession.saveUsername(this@LoginActivity, username)
-                Toast.makeText(this@LoginActivity, message.ifBlank { getString(R.string.login_success) }, Toast.LENGTH_SHORT).show()
+                val parsed = runCatching { JSONObject(response) }.getOrNull()
+                val userId = parsed?.optString("id").orEmpty()
+                val userNameFromResponse = parsed?.optString("name").orEmpty()
+
+                if (userId.isNotBlank()) {
+                    UserSession.saveUserId(this@LoginActivity, userId)
+                }
+                val nameToStore = userNameFromResponse.ifBlank { username }
+                UserSession.saveUsername(this@LoginActivity, nameToStore)
+
+                Toast.makeText(
+                    this@LoginActivity,
+                    getString(R.string.login_success),
+                    Toast.LENGTH_SHORT
+                ).show()
                 startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
             }.onFailure { error ->
                 showError(error.message ?: getString(R.string.login_error_generic))

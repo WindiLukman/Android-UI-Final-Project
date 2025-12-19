@@ -6,7 +6,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.finalproject.adapters.GenreAdapter
@@ -42,10 +41,6 @@ class HomeActivity : AppCompatActivity() {
         genreAdapter = GenreAdapter(emptyList()) { game -> openGameDetail(game) }
         binding.genreRecycler.layoutManager = LinearLayoutManager(this)
         binding.genreRecycler.adapter = genreAdapter
-
-        binding.searchInput.addTextChangedListener { text ->
-            filterGenres(text?.toString().orEmpty())
-        }
 
         BottomNavHelper.bind(this, binding.bottomNavContainer, BottomNavDestination.HOME)
 
